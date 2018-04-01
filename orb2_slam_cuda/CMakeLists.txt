@@ -48,7 +48,7 @@ find_package(Pangolin REQUIRED)
 catkin_package(
   INCLUDE_DIRS include ${PROJECT_SOURCE_DIR}
   DEPENDS EIGEN3 OpenCV Pangolin CUDA
-  LIBRARIES orb2_slam_cuda
+  LIBRARIES orb2_slam_cuda DBoW2 g2o
 )
 
 include_directories(
@@ -125,3 +125,4 @@ unset(CMAKE_RUNTIME_OUTPUT_DIRECTORY)
 add_subdirectory(gpu)
 add_subdirectory(Thirdparty/DBoW2)
 add_subdirectory(Thirdparty/g2o)
+
