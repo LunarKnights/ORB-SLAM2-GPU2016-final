@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <name>orb2_slam_cuda</name>
+  <version>0.0.1</version>
+  <description>
+    ROSified CUDA ORB2 SLAM library package
+  </description>
+
+  <license>GPLv3</license>
+
+  <maintainer email="kelvin.ly1618@gmail.com">Kelvin Ly</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

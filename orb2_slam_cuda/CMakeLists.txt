@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(ORB_SLAM2)
+project(orb2_slam_cuda)
 
 IF(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
@@ -45,11 +45,17 @@ find_package(OpenCV 3.1.0 REQUIRED)
 find_package(Eigen3 3.1.0 REQUIRED)
 find_package(Pangolin REQUIRED)
 
+catkin_package(
+  INCLUDE_DIRS include ${PROJECT_SOURCE_DIR}
+  DEPENDS EIGEN3 OpenCV Pangolin CUDA
+  LIBRARIES orb2_slam_cuda
+)
+
 include_directories(
-${PROJECT_SOURCE_DIR}
-${PROJECT_SOURCE_DIR}/include
-${EIGEN3_INCLUDE_DIR}
-${Pangolin_INCLUDE_DIRS}
+  ${PROJECT_SOURCE_DIR}
+  ${PROJECT_SOURCE_DIR}/include
+  ${EIGEN3_INCLUDE_DIR}
+  ${Pangolin_INCLUDE_DIRS}
 )
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY lib)
@@ -84,6 +90,8 @@ src/cuda/Orb_gpu.cu
 src/cuda/Cuda.cu
 )
 
+add_dependencies(${PROJECT_NAME} DBoW2 g2o)
+
 target_link_libraries(${PROJECT_NAME}
 ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
@@ -115,3 +123,5 @@ endif() # Build Examples
 
 unset(CMAKE_RUNTIME_OUTPUT_DIRECTORY)
 add_subdirectory(gpu)
+add_subdirectory(Thirdparty/DBoW2)
+add_subdirectory(Thirdparty/g2o)

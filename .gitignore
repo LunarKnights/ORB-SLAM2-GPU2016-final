@@ -6,9 +6,9 @@ Examples/Monocular/mono_tum
 Examples/RGB-D/rgbd_tum
 Examples/Stereo/stereo_kitti
 Thirdparty/DBoW2/build/
-Thirdparty/g2o/build/
-Thirdparty/g2o/config.h
-Vocabulary/ORBvoc.txt
+orb2_slam_cuda/Thirdparty/g2o/build/
+orb2_slam_cuda/Thirdparty/g2o/config.h
+orb2_slam_cuda/Vocabulary/ORBvoc.txt
 KeyFrameTrajectory.txt
 CameraTrajectory.txt
 
