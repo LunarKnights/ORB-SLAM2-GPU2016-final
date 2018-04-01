@@ -90,8 +90,7 @@ ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
 ${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
 ${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
-# nvToolsExt
--L${CUDA_TOOLKIT_ROOT_DIR}/lib/nvToolsExt
+-L${CUDA_TOOLKIT_ROOT_DIR}/lib nvToolsExt
 )
 
 # Build examples
