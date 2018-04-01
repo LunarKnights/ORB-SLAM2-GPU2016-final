@@ -33,8 +33,8 @@
 RgbdImageGrabber::RgbdImageGrabber(ORB_SLAM2::System* pSLAM, ORB_SLAM2::SlamData* pSLAMData,
       const ImageGrabberConfig& config, ros::NodeHandle &nh):
   ImageGrabber(pSLAM, pSLAMData, config),
-  rgb_sub(nh, "camera/rgb/image_raw", 1),
-  depth_sub(nh, "camera/depth_registered/image_raw", 1),
+  rgb_sub(nh, "rgb_raw", 1),
+  depth_sub(nh, "depth_raw", 1),
   sync(sync_pol(10), rgb_sub, depth_sub)
 {
     sync.registerCallback(boost::bind(&RgbdImageGrabber::GrabRGBD, this, _1, _2));

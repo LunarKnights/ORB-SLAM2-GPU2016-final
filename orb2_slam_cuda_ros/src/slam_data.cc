@@ -31,7 +31,7 @@ SlamData::SlamData(ORB_SLAM2::System* pSLAM, ros::NodeHandle *nodeHandler, bool 
     mTrans_cam2ground.block<3,1>(0,3) = mInitCam2Ground_t;  //< block_rows, block_cols >(pos_row, pos_col)
 
     image_transport::ImageTransport it_((*nodeHandler));
-    current_frame_pub = it_.advertise("/current_frame", 1);
+    current_frame_pub = it_.advertise("current_frame", 1);
 }
 
 void SlamData::SaveTimePoint(TimePointIndex index)

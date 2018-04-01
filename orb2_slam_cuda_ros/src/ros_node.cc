@@ -89,17 +89,17 @@ int main(int argc, char **argv)
       return -1;
     }
 
-    ORB_SLAM2::SlamData SLAMDATA(SLAM.get(), &nh, enablePublishROSTopic);
+    ORB_SLAM2::SlamData SLAMDATA(SLAM.get(), &nhPrivate, enablePublishROSTopic);
 
     switch (nodeType)
     {
     case kCameraRgbd:
       igb = std::shared_ptr<ImageGrabber>(
-        new RgbdImageGrabber(SLAM.get(), &SLAMDATA, config, nh));
+        new RgbdImageGrabber(SLAM.get(), &SLAMDATA, config, nhPrivate));
       break;
     case kCameraMono:
       igb = std::shared_ptr<ImageGrabber>(
-        new MonoImageGrabber(SLAM.get(), &SLAMDATA, config, nh));
+        new MonoImageGrabber(SLAM.get(), &SLAMDATA, config, nhPrivate));
       break;
     default:
       ROS_FATAL("invalid camera_type selected");
