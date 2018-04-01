@@ -95,11 +95,11 @@ int main(int argc, char **argv)
     {
     case kCameraRgbd:
       igb = std::shared_ptr<ImageGrabber>(
-        new RgbdImageGrabber(SLAM.get(), &SLAMDATA, config, nhPrivate));
+        new RgbdImageGrabber(SLAM.get(), &SLAMDATA, config, nh));
       break;
     case kCameraMono:
       igb = std::shared_ptr<ImageGrabber>(
-        new MonoImageGrabber(SLAM.get(), &SLAMDATA, config, nhPrivate));
+        new MonoImageGrabber(SLAM.get(), &SLAMDATA, config, nh));
       break;
     default:
       ROS_FATAL("invalid camera_type selected");
