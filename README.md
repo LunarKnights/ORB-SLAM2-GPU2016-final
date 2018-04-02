@@ -1,5 +1,5 @@
 # orb_slam2
-This is a fork of Yunchih Chen's [CUDA-enabled fork](https://github.com/yunchih/ORB-SLAM2-GPU2016-final) modified to integrate better with ROS, in particular removing the need of custom build steps. You can just clone this in your catkin workspace and it should just compile.
+This is a fork of Yunchih Chen's [CUDA-enhanced fork](https://github.com/yunchih/ORB-SLAM2-GPU2016-final) modified to integrate better with ROS, in particular removing the need of custom build steps. You can just clone this in your catkin workspace and it should just compile.
 This fork includes modifications made by [Thien Nguyen](https://github.com/hoangthien94/ORB_SLAM2_CUDA) in his fork of the repository, with a few additional modifications to improve the API.
 
 ## TODOs
@@ -25,6 +25,8 @@ TODO add parameters to adjust tf frames and clean up publish_\* parameters so th
 
 ### Topics
 TODO list topics
+
+**Following is the original README of ORB-SLAM2-CUDA**
 
 # ORB-SLAM2-GPU
 This is a fork of Raul Mur-Artal's [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2), on which we rewrite hot paths with CUDA. Our optimization enables us to run the algorithm in **real time** on a Nvidia's Jetson TX1.
