@@ -1,3 +1,33 @@
+# orb_slam2
+This is a fork of Yunchih Chen's [CUDA-enhanced fork](https://github.com/yunchih/ORB-SLAM2-GPU2016-final) modified to integrate better with ROS, in particular removing the need of custom build steps. You can just clone this in your catkin workspace and it should just compile.
+This fork includes modifications made by [Thien Nguyen](https://github.com/hoangthien94/ORB_SLAM2_CUDA) in his fork of the repository, with a few additional modifications to improve the API.
+
+## TODOs
+- Clean up the data output stage; currently there's some interdependencies between some of the parameters so some won't work unless some of the other ones are also enabled
+
+## orb2_slam_cuda_ros
+The `orb2_slam_cuda_ros` package contains a single node, `orb2_slam_cuda_node`.
+This node accepts a variety of different image topics, depending on the type selected by the parameter `camera_type`, and outputs debug images, a timestamped pose, and a pose increment with a measure of its covariance
+
+### Parameters
+|Parameter name     | Parameter type | Description |
+|-------------------|----------------|-------------|
+|`camera_type`|int|Selects the type of topics `orb2_slam_cuda_node` describes to. 0 - monocular, 1 - RGB-D, 2 - Stereo |
+|`vocabulary_path`|string|Path to the vocabulary file used by the process. Probably should be set as it is in the example launch file|
+|`settings_path`|string|Stores the configuration for the node. Most importantly it should include the calibration data for the camera|
+|`enable_viewer`|bool|Enables the viewer GUI included in the node|
+|`publish_tf`|bool|Enables pose output into `tf`|
+|`publish_pcl`|bool|Enables point cloud output|
+|`publish_pose`|bool|Enables pose output|
+|`publish_image`|bool|Enables image output|
+
+TODO add parameters to adjust tf frames and clean up publish_\* parameters so they actually work correctly
+
+### Topics
+TODO list topics
+
+**Following is the original README of ORB-SLAM2-CUDA**
+
 # ORB-SLAM2-GPU
 This is a fork of Raul Mur-Artal's [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2), on which we rewrite hot paths with CUDA. Our optimization enables us to run the algorithm in **real time** on a Nvidia's Jetson TX1.
 
