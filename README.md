@@ -1,6 +1,18 @@
 # ORB-SLAM2-GPU
 This is a fork of Raul Mur-Artal's [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2), on which we rewrite hot paths with CUDA. Our optimization enables us to run the algorithm in **real time** on a Nvidia's Jetson TX1.
 
+## IMPORTANT BUILD NOTE
+
+So the build process is a little complicated because there's something wrong with the CMake file for `orb2_slam_cuda_ros`.
+Basically you'll need to `catkin_make` the project twice, first time adding a `CATKIN_IGNORE` file into `orb2_slam_cuda_ros` to prevent it from messing with the build, and then remove the ignore file and rebuild the project so that catkin creates the node executables you'll need.
+
+This two step process is necessary because (from my understanding) there's two phases in a CMake build process, configuration and then the actual compilation and linking.
+Catkin checks all the packages within a workspace and configures them all at once to ensure all dependencies are met, and then it starts building them.
+There's something wrong in the configuration of the `*_ros` package, and it depends on files in the `orb_slam_cuda` package having already been built.
+This means it will fail during configuration, stopping the build process.
+So to get past this catch-22, you'll need to build it twice, as explained above.
+There's probably a cleaner fix, but it took me like a solid week to get it to build this nicely already, and I really don't feel like spending another week to fix this.
+
 - [Project presentation website](http://yunchih.github.io/ORB-SLAM2-GPU2016-final/)
 - [Demo video on youtube](https://www.youtube.com/watch?v=p77hLLRfBGQ)
 
