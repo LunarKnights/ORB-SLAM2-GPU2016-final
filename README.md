@@ -4,6 +4,11 @@ This fork includes modifications made by [Thien Nguyen](https://github.com/hoang
 
 ## TODOs
 - Clean up the data output stage; currently there's some interdependencies between some of the parameters so some won't work unless some of the other ones are also enabled
+- Fix build system; you need to do a little trickery to get this to build right now
+
+## How to build
+Right now the `CMakeLists.txt` are messed up, so trying to add this to your system and building it won't work because `orb2_slam_cuda_ros`'s CMake files won't let configuration finish correctly.
+To get this to build, you'll need to add a `CATKIN_IGNORE` file to `orb2_slam_cuda_ros` so it won't be included in the build, wait for the first build to finish (generating the files for `orb2_slam_cuda`), and then removing the `CATKIN_IGNORE` and running `catkin_make` again.
 
 ## orb2_slam_cuda_ros
 The `orb2_slam_cuda_ros` package contains a single node, `orb2_slam_cuda_node`.
